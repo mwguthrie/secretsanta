@@ -1,22 +1,8 @@
 #!/usr/bin/python -tt
 
-# This file is part of secretsanta.
-#    secretsanta is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#    
-#    secretsanta is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#    
-#    You should have received a copy of the GNU General Public License
-#    along with secretsanta.  If not, see <http://www.gnu.org/licenses/>.
-
-"""A 'Secret Santa' pairing script. Based on a list of names, email addresses
-    and room numbers, it generates pairs such that a person won't have to buy 
-    a present for themselves, their family members, or the person who has to 
+"""A `Secret Santa' pairing script. Based on a list of names, email addresses
+    and living situation, it generates pairs such that a person won't have to buy 
+    a present for themselves, their partner, or the person who has to 
     buy a present for them.
     The result is stored as a csv file.
     """
