@@ -9,6 +9,6 @@ First, `pairing.py` takes a .csv file where the first row contains column header
 4. everyone gets one gift. 
 
 
-Note that the approach is inelegant in that an index vector is 'shuffled', then checked against conditions 1 through 4, and shuffled again until these are true. Optimised for coding time, not for elegance and computation.  
+Note that the approach is inelegant in that an index vector is 'shuffled,' then checked against conditions 1 through 4, and shuffled again until these are true. 
 
-Then, `sendemail.py` sends an email to each 'giver' with information about his 'receiver', corresponding with the list generated in the previous script. Run with caution, as this sends an email to everyone upon running!  
+Then, `sendemail.py` sends an email to each 'giver' with information about his 'receiver,' corresponding with the list generated in the previous script. Run with caution, as this sends an email to everyone upon running!  
