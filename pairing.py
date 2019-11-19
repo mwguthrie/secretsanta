@@ -1,16 +1,16 @@
 #!/usr/bin/python -tt
-
+ 
 """A `Secret Santa' pairing script. Based on a list of names, email addresses
     and living situation, it generates pairs such that a person won't have to buy 
     a present for themselves, their partner, or the person who has to 
     buy a present for them.
     The result is stored as a csv file.
     """
-
+ 
 import sys
 import csv
 import random
-
+ 
 """Read csv with names, email addresses and room numbers of participants
     """
 def read_file():
@@ -19,10 +19,15 @@ def read_file():
         giver_list = list(reader)
         giver_list = giver_list[1:] # remove first row
         return giver_list
-
+ 
 """ Write csv with names, email addresses and room numbers of givers and receivers
     """
 def write_file(givers_list, rand_vec):
+    with open('pairs-readable.csv', 'w') as csvfile:
+        writer = csv.writer(csvfile, delimiter=',')
+        for ind in range(givers_list.__len__()):
+            writer.writerow([givers_list[ind][1] + ',' + '-->' + ',' + givers_list[rand_vec[ind]][1]])
+             
     with open('pairs.csv', 'w') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
         for ind in range(givers_list.__len__()):
@@ -30,7 +35,7 @@ def write_file(givers_list, rand_vec):
                 + ',' + givers_list[ind][3]
                 + ',' + givers_list[rand_vec[ind]][1] + ','
                 + givers_list[rand_vec[ind]][2] + ',' + givers_list[rand_vec[ind]][3]])
-
+ 
 """ Define a main() function that calls the necessary functions.
     """
 def main():
@@ -70,11 +75,11 @@ def main():
                     break
     write_file(givers_list, rand_vec) # write csv file with pairs
     for ind in range(N): # print in Terminal
-        print givers_list[ind][1], "(", givers_list[ind][2], ") to", \
-           givers_list[rand_vec[ind]][1], "(", givers_list[rand_vec[ind]][2], ")"
+        print givers_list[ind][1], "-->", \
+           givers_list[rand_vec[ind]][1]
     print "Number of iterations needed: ", iteration # Print number of iterations
-
-""" This is the standard boilerplate that calls the main() function.
-    """
+ 
+ 
+ 
 if __name__ == '__main__':
     main()
