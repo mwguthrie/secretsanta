@@ -5,7 +5,7 @@ First, `pairing.py` takes a .csv file where the first row contains column header
 
 1. a person doesn't have to give a gift to themselves;
 2. a person doesn't receive a gift from the person they give a gift to; 
-3. a person shouldn't get a gift to a partner; 
+3. a person shouldn't give a gift to their partner; 
 4. everyone gets one gift. 
 
 
