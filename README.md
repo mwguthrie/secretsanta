@@ -1,7 +1,7 @@
 # secretsanta
 Secret Santa pairing and emailing script in Python. 
 
-First, `pairing.py` takes a .csv file where the first row contains column headers (ignored), the first column contains time stamps (ignored), and further columns contain the participants' name, housing pairs (ordered by integer), and email address. It then generates a csv with these columns for 'givers' adjacent to columns for 'receivers,' such that:
+First, `pairing.py` takes a .csv file where the first row contains column headers (ignored), the first column contains time stamps (ignored), and further columns contain the participants' name, housing pairs (ordered by integer, but could be any matching variable), and email address. It then generates a csv with these columns for 'givers' adjacent to columns for 'receivers,' such that:
 
 1. a person doesn't have to give a gift to themselves;
 2. a person doesn't receive a gift from the person they give a gift to; 
