@@ -28,29 +28,27 @@ import smtplib
     """
 def send_email(pair_list):
     for row in pair_list:
-        from_addr = 'Secret Santa <johnsmith@hotmail.com>'
+        from_addr = 'Secret Santa <+dummyemail@gmail.com>'
         to_addr  = row[2]
         msg = "\r\n".join([
             "From: " + from_addr,
             "To: " + to_addr,
             "Subject: Secret Santa",
             "",
-            "Dear " + row[0][1:] + " (room " + row[1] + ")",
+            "Dear " + row[0][1:],
             "",
-            "Thanks for participating in the Secret Santa!",
+            "This is Secret Santa!",
             "",
-            "Please find a present for " + row[3] + " (room " + row[4] + ").",
+            "Please find a present for " + row[3] + ".",
             "",
-            "Please reply to this email if you have any questions or issues.",
-            "",
-            "See you then!",
+            "Happy Holidays!",
             "",
             "Santa"
             ])
-        username = 'johnsmith@hotmail.com'
-        password = 'xxxxxxxx'
-        server = smtplib.SMTP('smtp-mail.outlook.com',587) # if Hotmail/Microsoft Outlook
-        #server = smtplib.SMTP('smtp.gmail.com:587') # if gmail
+        username = '+dummyemail@gmail.com'
+        password = '+dummypassword'
+#        server = smtplib.SMTP('smtp-mail.outlook.com',587) # if Hotmail/Microsoft Outlook
+        server = smtplib.SMTP('smtp.gmail.com:587') # if gmail
         server.ehlo()
         server.starttls()
         server.ehlo()
