@@ -1,16 +1,16 @@
 #!/usr/bin/python -tt
- 
+
 """A `Secret Santa' pairing script. Based on a list of names, email addresses
     and living situation, it generates pairs such that a person won't have to buy 
     a present for themselves, their partner, or the person who has to 
     buy a present for them.
     The result is stored as a csv file.
     """
- 
+
 import sys
 import csv
 import random
- 
+
 """Read csv with names, email addresses and room numbers of participants
     """
 def read_file():
@@ -19,7 +19,7 @@ def read_file():
         giver_list = list(reader)
         giver_list = giver_list[1:] # remove first row
         return giver_list
- 
+
 """ Write csv with names, email addresses and room numbers of givers and receivers
     """
 def write_file(givers_list, rand_vec):
@@ -27,7 +27,7 @@ def write_file(givers_list, rand_vec):
         writer = csv.writer(csvfile, delimiter=',')
         for ind in range(givers_list.__len__()):
             writer.writerow([givers_list[ind][1] + ',' + '-->' + ',' + givers_list[rand_vec[ind]][1]])
-             
+			
     with open('pairs.csv', 'w') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
         for ind in range(givers_list.__len__()):
@@ -35,7 +35,7 @@ def write_file(givers_list, rand_vec):
                 + ',' + givers_list[ind][3]
                 + ',' + givers_list[rand_vec[ind]][1] + ','
                 + givers_list[rand_vec[ind]][2] + ',' + givers_list[rand_vec[ind]][3]])
- 
+
 """ Define a main() function that calls the necessary functions.
     """
 def main():
@@ -56,21 +56,21 @@ def main():
             if rand_vec[ind] == ind:
                 conditions_met = False
                 break
-            # Condition 2: not to their own Secret Santa
+            # Condition 2: not to their own Secret Valentine
             elif rand_vec[rand_vec[ind]] == ind:
                 conditions_met = False
                 break
-            # Condition 3: not to partners
+            # Condition 3: not to 'roommates' (people with same room number listed)
             elif givers_list[ind][2] == givers_list[rand_vec[ind]][2]:
                 conditions_met = False
                 break
-#            # Condition 4: not to person X if your partner has person X's partner (this condition isn't necessary for us)
-#            partners = [i for i,g in enumerate(givers_list) if g[2] == givers_list[ind][2] and i is not ind] # people with same room number
+#            # Condition 4: not to person X if your roommate has person X's roommate
+#            roommates = [i for i,g in enumerate(givers_list) if g[2] == givers_list[ind][2] and i is not ind] # people with same room number
 #            # for roommates of 'ind', check that they do not give to the same 'team'
-#            for partner in partners:
+#            for roommate in roommates:
 #                # If A1 -> B1, then NOT A2 -> B2
 #                # i.e. check if recepient of ind is not from same room as recipient of roommate
-#                if givers_list[rand_vec[ind]][2] == givers_list[rand_vec[partner]][2]: 
+#                if givers_list[rand_vec[ind]][2] == givers_list[rand_vec[roommate]][2]: 
 #                    conditions_met = False
 #                    break
     write_file(givers_list, rand_vec) # write csv file with pairs
@@ -78,8 +78,8 @@ def main():
         print givers_list[ind][1], "-->", \
            givers_list[rand_vec[ind]][1]
     print "Number of iterations needed: ", iteration # Print number of iterations
- 
- 
- 
+
+
+
 if __name__ == '__main__':
     main()
